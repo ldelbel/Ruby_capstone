@@ -8,20 +8,20 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 30
+  Max: 35
 Metrics/AbcSize:
-  Max: 50
+  Max: 60
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
 Metrics/CyclomaticComplexity:
-  Max: 11
+  Max: 20
 Metrics/PerceivedComplexity:
-  Max: 12
+  Max: 20
 Metrics/ModuleLength:
-  Max: 124
+  Max: 130
 
 Style/Documentation:
   Enabled: false
@@ -35,6 +35,10 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/IdenticalConditionalBranches:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
@@ -53,5 +57,7 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-
+GlobalVars:
+  AllowedVariables:
+    - redis
 # rubocop:disable Style/CaseEquality

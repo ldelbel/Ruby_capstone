@@ -1,6 +1,6 @@
 require_relative './support.rb'
 
-class Checker 
+class Checker
   attr_accessor :error_output
   def initialize(file)
     @file_lines = Read.new(file).file_lines
@@ -12,7 +12,7 @@ class Checker
 
   def trailing_spaces_check
     @file_lines.each_with_index do |line_content, line_num|
-      @error.list_trail_error(line_num) if line_content[-2].eql?(" ") && !(line_content.blank?)
+      @error.list_trail_error(line_num) if line_content[-2].eql?(' ') && !line_content.blank?
     end
     @error.list
   end
@@ -28,15 +28,14 @@ class Checker
       smcheck_elsif = @small.check_elsif(line_content)
       smcheck_empty = @small.check_empty(line_content)
       smcheck_when = @small.check_when(line_content)
-      case
-      when smcheck_empty
-      when !smcheck_ident && !smcheck_end && !smcheck_elsif && !smcheck_when
+      if smcheck_empty
+      elsif !smcheck_ident && !smcheck_end && !smcheck_elsif && !smcheck_when
         @error.list_ident_error(line_num + 1, expected_identation)
-      when !smcheck_ident_end && smcheck_end 
+      elsif !smcheck_ident_end && smcheck_end
         @error.list_ident_error(line_num + 1, expected_identation - 2)
-      when !smcheck_ident_end && smcheck_elsif 
+      elsif !smcheck_ident_end && smcheck_elsif
         @error.list_ident_error(line_num + 1, expected_identation - 2)
-      when !smcheck_ident_end && smcheck_when
+      elsif !smcheck_ident_end && smcheck_when
         @error.list_ident_error(line_num + 1, expected_identation - 2)
       end
       current_value = @control.identation_value
@@ -46,14 +45,14 @@ class Checker
 
   def extra_empty_lines_check
     lines = []
-    @file_lines.each_with_index do |line_content, line_num|
+    @file_lines.each_with_index do |_line_content, line_num|
       lines << line_num if @file_lines[line_num].blank?
     end
     i = 0
-      while i < lines.length - 1
-        @error.list_empty_lines_error(lines, i) if @small.consec?(lines,i)
-        i += 1
-      end
+    while i < lines.length - 1
+      @error.list_empty_lines_error(lines, i) if @small.consec?(lines, i)
+      i += 1
+    end
     @error.list
   end
 
@@ -65,8 +64,4 @@ class Checker
     @error.list_end_error(status)
     @error.list
   end
-  
 end
-
-
-
