@@ -9,7 +9,7 @@ end
 class Control
   
   attr_accessor :reserved_words_count, :error_list, :identation_value, :end_count
-  attr_reader :reserved_words 
+  attr_reader :reserved_words
   
   def initialize
     @reserved_words = ["begin","\\case","class","def","do","if","module", "unless"]
@@ -18,7 +18,7 @@ class Control
     @end_count = 0
     @identation_value = 0
   end
-  
+
   def line_iteration_and_counts(line, control_instance)
     unless line[0].strip == '#'
       if control_instance.reserved_words.include?(line.split(' ')[0]) || line.include?(' do ')
@@ -50,13 +50,13 @@ class ErrorListing
   end
 
   def list_trail_error(line_n)
-    @list << {'line' => line_n+1, 'error' => 'C: Trailing whitespace detected.' } 
+    @list << {'line' => line_n+1, 'error' => 'C: Trailing whitespace detected.' }
   end
 
   def list_end_error(status)
     case status
-    when 1  then @list << {'error' => 'syntax error, unexpected end-of-input, expecting end' } 
-    when -1 then @list << {'error' => 'syntax error, unexpected end, expecting end-of-input' } 
+    when 1  then @list << {'error' => 'syntax error, unexpected end-of-input, expecting end' }
+    when -1 then @list << {'error' => 'syntax error, unexpected end, expecting end-of-input' }
     end
   end
 
