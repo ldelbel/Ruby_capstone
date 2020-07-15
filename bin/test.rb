@@ -18,7 +18,7 @@ class Control
     @end_count = 0
     @identation_value = 0
   end
-
+  
   def line_iteration_and_counts(line, control_instance)
     unless line[0].strip == '#'
       if control_instance.reserved_words.include?(line.split(' ')[0]) || line.include?(' do ')
@@ -29,7 +29,6 @@ class Control
         control_instance.identation_value -= 1
       end
     end
-    puts " reserved #{control_instance.reserved_words_count} end #{control_instance.end_count} ident  #{control_instance.identation_value} #{line} "
   end
 
   def reset
@@ -45,16 +44,11 @@ class ErrorListing
   def initialize
     @list = []
   end
-  #DEBUG
-  
   
   def list_ident_error(line_n, expec_ident)
     @list << { 'line' => line_n, 'error' => "Identation error detected. Expected #{expec_ident} whitespaces."}
-    
   end
-  
 
-  #DEBUG
   def list_trail_error(line_n)
     @list << {'line' => line_n+1, 'error' => 'C: Trailing whitespace detected.' } 
   end
@@ -77,17 +71,9 @@ class SmallChecks
   def check_end(line_c)
     line_c.strip == 'end'
   end
-
-  def check_elsif(line_c)
-    line_c.strip.split(' ')[0].eql?('elsif')
-  end
   
   def check_ident(line_c, expec_ident)
     line_c.index(/[^ ]/).eql?(expec_ident)
-  end
-
-  def check_empty(line_c)
-    puts line_c.blank?
   end
   
   def check_ident_end(line_c, expec_ident)
@@ -104,5 +90,3 @@ class SmallChecks
 
 end
 
-small = SmallChecks.new
-small.check_empty("     ")

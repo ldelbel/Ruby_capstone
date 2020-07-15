@@ -1,11 +1,12 @@
 require_relative './support.rb'
 
 class Checker 
-  attr_reader :file_lines
+  attr_accessor :error_output
   def initialize(file)
     @file_lines = Read.new(file).file_lines
     @control = Control.new
     @error = ErrorListing.new
+    @error_output = @error.list
     @small = SmallChecks.new
   end
 
@@ -24,11 +25,17 @@ class Checker
       smcheck_ident = @small.check_ident(line_content, expected_identation)
       smcheck_ident_end = @small.check_ident_end(line_content, expected_identation)
       smcheck_end = @small.check_end(line_content)
+      smcheck_elsif = @small.check_elsif(line_content)
+      smcheck_empty = @small.check_empty(line_content)
       case
-      when !smcheck_ident && !smcheck_end  
+      when !smcheck_ident && !smcheck_end && !smcheck_elsif 
         @error.list_ident_error(line_num + 1, expected_identation)
-      when !smcheck_ident_end && smcheck_end 
+      # when !smcheck_ident_end && smcheck_end 
+      #   @error.list_ident_error(line_num + 1, expected_identation)
+      when !smcheck_ident_end && smcheck_elsif 
         @error.list_ident_error(line_num + 1, expected_identation - 2)
+      when !smcheck_ident_end && smcheck_empty
+        @error.list_ident_error(line_num + 1, expected_identation) if line_content.length > 3
       end
       current_value = @control.identation_value
     end
@@ -59,6 +66,5 @@ class Checker
   
 end
 
-check = Checker.new('./test.rb')
-p check.identation_check
+
 

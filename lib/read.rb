@@ -1,4 +1,3 @@
-require_relative './test.rb'
 
 class Read
   
