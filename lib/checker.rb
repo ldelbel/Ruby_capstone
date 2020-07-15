@@ -58,7 +58,7 @@ class Checker
   end
 
   def missing_end_check
-    @file_lines.each_with_index do |line_content, line_num| #HERE I CAN USE ONLY EACH - TAKE A LOOK LATER
+    @file_lines.each_with_index do |line_content, line_num|
       @control.line_iteration_and_counts(line_content, line_num)
     end
     status = @small.block_status_check(@control)

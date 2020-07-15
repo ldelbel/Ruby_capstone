@@ -31,13 +31,6 @@ class Control
     end
     puts " reserved #{self.reserved_words_count} end #{self.end_count} ident  #{self.identation_value} #{line} "
   end
-  
-  def reset
-    @error_list = []
-    @reserved_words_count = 0
-    @end_count = 0
-    @identation_value = 0
-  end
 end
 
 class ErrorListing
@@ -45,15 +38,11 @@ class ErrorListing
   def initialize
     @list = []
   end
-  #DEBUG
-  
-  
+    
   def list_ident_error(line_n, expec_ident)
     @list << { 'line' => line_n, 'error' => "Identation error detected. Expected #{expec_ident} whitespaces."}
   end
   
-
-  #DEBUG
   def list_trail_error(line_n)
     @list << {'line' => line_n+1, 'error' => 'C: Trailing whitespace detected.' } 
   end
@@ -106,6 +95,3 @@ class SmallChecks
   end
 
 end
-
-small = SmallChecks.new
-small.check_empty("     ")
