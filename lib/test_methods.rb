@@ -48,7 +48,6 @@ end
 
 def block_status_check(file_lines)
   for line in file_lines do
-    # this block does a very important thing
     unless line[0].strip == '#'
       if $reserved_words.include?(line.split(' ')[0]) || line.include?(' do ')
         puts line.split(' ')[0].to_s.strip
@@ -75,46 +74,6 @@ def line_iteration_and_counts(line)
       $identation_value -= 1
     end
   end
-end
-
-
-def identation_check(file_lines)
-  current_value = 0
-  file_lines.each_with_index do |line_content, line_num|
-    expected_identation = current_value * 2
-    line_iteration_and_counts(line_content)
-    test_ident = test_ident(line_content, expected_identation)
-    test_ident_end = test_ident_end(line_content, expected_identation)
-    test_end = test_end(line_content)
-    case
-    when !test_ident && !test_end then list_ident_error(line_num + 1, expected_identation)
-    when !test_ident_end && test_end then list_ident_error(line_num + 1, expected_identation - 2)
-    end
-    current_value = $identation_value
-  end
-  return $error_list
-end
-
-def list_ident_error(line_n, expec_ident)
-  $error_list << { line: line_n, error: "Identation error detected. Expected #{expec_ident} whitespaces."}
-end
-
-def test_end(line_c)
-  line_c.strip == 'end'
-end
-
-def test_ident(line_c, expec_ident)
-  line_c.index(/[^ ]/).eql?(expec_ident)
-end
-
-def test_ident_end(line_c, expec_ident)
-  line_c.index(/[^ ]/).eql?(expec_ident == 0 ? 0 : expec_ident - 2)
-end
-
-def reset
-  $reserved_words_count = 0
-  $end_count = 0
-  $identation_value = 0
 end
 
 
