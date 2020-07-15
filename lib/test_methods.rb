@@ -1,10 +1,10 @@
 require_relative './test.rb'
+require_relative './data.rb'
+require_relative './read.rb'
 
-file_lines = []
+read = Read.new('./test.rb')
+file_lines = read.file_lines
 $error_list = []
-File.readlines('./test.rb').each {|line| file_lines << line  }
-
-
 $reserved_words = ["begin","\\case","class","def","do","if","module", "unless"]
 $reserved_words_count = 0
 $end_count = 0
@@ -93,8 +93,6 @@ def identation_check(file_lines)
     current_value = $identation_value
   end
   return $error_list
-
-  
 end
 
 def list_ident_error(line_n, expec_ident)
