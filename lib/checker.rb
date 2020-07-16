@@ -16,7 +16,6 @@ class Checker
       @error.list_trail_error(line_num) if line_content[-2].eql?(' ') && !line_content.blank?
     end
     return @error.list
-    reset
   end
 
   def indentation_check
@@ -45,8 +44,6 @@ class Checker
       end
       current_value = @control.indentation_value
     end
-    return @error.list
-    reset
   end
 
   def extra_empty_lines_check
@@ -71,5 +68,4 @@ class Checker
     @end_error_check = @control.end_error_check
     message
   end
-
 end
