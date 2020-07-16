@@ -7,7 +7,7 @@ class String
 end
 
 class Control
-  attr_accessor :reserved_words_count, :error_list, :indentation_value, :end_count
+  attr_accessor :reserved_words_count, :error_list, :indentation_value, :end_count, :end_error_check
   attr_reader :reserved_words
 
   def initialize
@@ -16,6 +16,7 @@ class Control
     @reserved_words_count = 0
     @end_count = 0
     @indentation_value = 0
+    @end_error_check = false
   end
 
   def line_iteration_and_counts(line, _line_num)
@@ -28,7 +29,12 @@ class Control
         self.indentation_value -= 1
       end
     end
-    puts " reserved #{self.reserved_words_count} end #{self.end_count} ident  #{self.indentation_value} #{line} "
+  end
+
+  def reset
+    @reserved_words_count = 0
+    @end_count = 0
+    @indentation_value = 0
   end
 end
 
@@ -46,10 +52,14 @@ class ErrorListing
     @list << { 'line' => line_n + 1, 'error' => 'C: Trailing whitespace detected.' }
   end
 
-  def list_end_error(status)
+  def list_end_error(status, control_instance)
     case status
-    when 1 then @list << { 'error' => 'syntax error, unexpected end-of-input, expecting end' }
-    when -1 then @list << { 'error' => 'syntax error, unexpected end, expecting end-of-input' }
+    when 1
+      control_instance.end_error_check = true
+      return "syntax error, unexpected end-of-input, expecting end"
+    when -1
+      control_instance.end_error_check = true
+      return "syntax error, unexpected end, expecting end-of-input"
     end
   end
 

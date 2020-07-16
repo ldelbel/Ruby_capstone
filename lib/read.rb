@@ -1,5 +1,5 @@
 class Read
-  attr_accessor :file_lines
+  attr_reader :file_lines
 
   def initialize(file)
     @file = file
@@ -9,3 +9,4 @@ class Read
     end
   end
 end
+

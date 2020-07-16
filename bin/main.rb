@@ -24,11 +24,10 @@ class Linter
   def print_result
     puts "\n **Traceback:".light_white.on_black.bold
     puts "\n"
-
-    @check.error_output.each do |hash|
-      if hash['line'].nil?
-
-      else
+    if @check.end_error_check 
+      puts " #{@file_input.yellow}:#{@check.file_lines.length}   #{@check.missing_end_check.red}"
+    else
+      @check.error_output.each do |hash|
         case hash['line'].digits.count
         when 1
           print "#{@file_input}:#{hash['line']}".red
@@ -47,13 +46,14 @@ class Linter
           puts "   #{hash['error']}".yellow
         end
       end
-    end
-    if @check.error_output.empty?
-      puts "\n"
-      puts " ----> #{@check.error_output.length} offenses detected.".black.on_cyan
-    else
-      puts "\n"
-      puts " ----> #{@check.error_output.length} offenses detected.".white.on_red
+      if @check.error_output.empty?
+        puts "\n"
+        puts " ----> #{@check.error_output.length} offenses detected.".black.on_cyan
+        puts @check.end_error_check
+      else
+        puts "\n"
+        puts " ----> #{@check.error_output.length} offenses detected.".white.on_red
+      end
     end
   end
 end
