@@ -17,28 +17,28 @@ class Checker
     @error.list
   end
 
-  def identation_check
+  def indentation_check
     current_value = 0
     @file_lines.each_with_index do |line_content, line_num|
-      expected_identation = current_value * 2
+      expected_indentation = current_value * 2
       @control.line_iteration_and_counts(line_content, line_num)
-      smcheck_ident = @small.check_ident(line_content, expected_identation)
-      smcheck_ident_end = @small.check_ident_end(line_content, expected_identation)
+      smcheck_ident = @small.check_ident(line_content, expected_indentation)
+      smcheck_ident_end = @small.check_ident_end(line_content, expected_indentation)
       smcheck_end = @small.check_end(line_content)
       smcheck_elsif = @small.check_elsif(line_content)
       smcheck_empty = @small.check_empty(line_content)
       smcheck_when = @small.check_when(line_content)
       if smcheck_empty
       elsif !smcheck_ident && !smcheck_end && !smcheck_elsif && !smcheck_when
-        @error.list_ident_error(line_num + 1, expected_identation)
+        @error.list_ident_error(line_num + 1, expected_indentation)
       elsif !smcheck_ident_end && smcheck_end
-        @error.list_ident_error(line_num + 1, expected_identation - 2)
+        @error.list_ident_error(line_num + 1, expected_indentation - 2)
       elsif !smcheck_ident_end && smcheck_elsif
-        @error.list_ident_error(line_num + 1, expected_identation - 2)
+        @error.list_ident_error(line_num + 1, expected_indentation - 2)
       elsif !smcheck_ident_end && smcheck_when
-        @error.list_ident_error(line_num + 1, expected_identation - 2)
+        @error.list_ident_error(line_num + 1, expected_indentation - 2)
       end
-      current_value = @control.identation_value
+      current_value = @control.indentation_value
     end
     @error.list
   end

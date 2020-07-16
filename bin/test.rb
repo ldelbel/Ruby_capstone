@@ -5,7 +5,7 @@ class String
 end
 
 class Control
-  attr_accessor :reserved_words_count, :error_list, :identation_value, :end_count
+  attr_accessor :reserved_words_count, :error_list, :indentation_value, :end_count
   attr_reader :reserved_words
 
   def initialize
@@ -13,7 +13,7 @@ class Control
     @error_list = []
     @reserved_words_count = 0
     @end_count = 0
-    @identation_value = 0
+    @indentation_value = 0
   end
 
   def line_iteration_and_counts(line, control_instance)
@@ -21,10 +21,10 @@ class Control
 
     if control_instance.reserved_words.include?(line.split(' ')[0]) || line.include?(' do ')
       control_instance.reserved_words_count += 1
-      control_instance.identation_value += 1
+      control_instance.indentation_value += 1
     elsif line.strip == 'end'
       control_instance.end_count += 1
-      control_instance.identation_value -= 1
+      control_instance.indentation_value -= 1
     end
   end
 
@@ -32,7 +32,7 @@ class Control
     @error_list = []
     @reserved_words_count = 0
     @end_count = 0
-    @identation_value = 0
+    @indentation_value = 0
   end
 end
 
@@ -43,7 +43,7 @@ class ErrorListing
   end
 
   def list_ident_error(line_n, expec_ident)
-    @list << { 'line' => line_n, 'error' => "Identation error detected. Expected #{expec_ident} whitespaces." }
+    @list << { 'line' => line_n, 'error' => "indentation error detected. Expected #{expec_ident} whitespaces." }
   end
 
   def list_trail_error(line_n)

@@ -6,7 +6,6 @@ class Read
     @file_lines = []
     begin
       File.readlines(@file).each { |line| @file_lines << line }
-    rescue StandardError
     end
   end
 end

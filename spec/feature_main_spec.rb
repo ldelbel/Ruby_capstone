@@ -35,7 +35,7 @@ describe SmallChecks do
   end
 
   describe '#check_ident' do
-    context 'when expec_ident matches identation' do
+    context 'when expec_ident matches indentation' do
       it 'returns true' do
         expect(small.check_ident(line_mock_2, expec_ident)).to eql(true)
       end
@@ -51,7 +51,7 @@ describe SmallChecks do
   end
 
   describe '#check_ident_end' do
-    context 'when identation is equal to identation minus factor' do
+    context 'when indentation is equal to indentation minus factor' do
       it 'returns true' do
         expect(small.check_ident_end(line_mock_2, 4)).to eql(true)
       end

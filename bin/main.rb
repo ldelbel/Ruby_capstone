@@ -15,7 +15,7 @@ class Linter
       puts 'Point a file to be checked'
     else
       @check.trailing_spaces_check
-      @check.identation_check
+      @check.indentation_check
       @check.extra_empty_lines_check
       @check.missing_end_check
     end
