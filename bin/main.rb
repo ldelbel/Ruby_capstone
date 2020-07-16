@@ -59,6 +59,5 @@ class Linter
 end
 
 linter = Linter.new(file_input, check)
-
 linter.run_checks
 linter.print_result

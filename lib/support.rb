@@ -45,11 +45,11 @@ class ErrorListing
   end
 
   def list_ident_error(line_n, expec_ident)
-    @list << { 'line' => line_n, 'error' => "indentation error detected. Expected #{expec_ident} whitespaces." }
+    @list << { 'line' => line_n, 'error' => "Indentation error detected. Expected #{expec_ident} whitespaces." }
   end
 
   def list_trail_error(line_n)
-    @list << { 'line' => line_n + 1, 'error' => 'C: Trailing whitespace detected.' }
+    @list << { 'line' => line_n + 1, 'error' => 'Trailing whitespace detected.' }
   end
 
   def list_end_error(status, control_instance)

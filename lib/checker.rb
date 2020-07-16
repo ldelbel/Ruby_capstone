@@ -8,11 +8,10 @@ class Checker
     @error = ErrorListing.new
     @error_output = @error.list
     @small = SmallChecks.new
-    @end_error_check = @control.end_error_check
+    @end_error_check = false
   end
 
   def trailing_spaces_check
-    @control.reset
     @file_lines.each_with_index do |line_content, line_num|
       @error.list_trail_error(line_num) if line_content[-2].eql?(' ') && !line_content.blank?
     end
