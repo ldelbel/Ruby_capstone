@@ -190,6 +190,8 @@ To run the Linter on a file, follow these steps:
 
 Remember to type the path relative to where main.rb is.
 
+To run the linter on our example, use ruby main.rb example.rb (when inside bin/)
+
 ## 🛠 Testing <a name = "testing"></a>
 
 - run bundle exec rspec
