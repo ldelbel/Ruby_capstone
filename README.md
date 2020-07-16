@@ -33,7 +33,6 @@
   <a href="#testing">Testing</a> •
   <a href="#with">Built With</a> •
   <a href="#tested">Tested With</a> •
-  <a href="#ldl">Live Demo</a> •
   <a href="#author">Author</a>
 </p>
 
@@ -166,10 +165,6 @@ A Ruby Linters built on Ruby.
 ## 🔧 Tested with<a name = "tested"></a>
   
 - RSpec 3.9
-
-## 🔴 Live Demo <a name = "ldl"></a>
-
-[![Run on Repl.it]()
 
 ## 🔨 Setup
 
