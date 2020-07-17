@@ -172,13 +172,7 @@ A Ruby Linters built on Ruby.
 
 ## 🛠 Installing <a name = "ins"></a>
 
-- run npm install to install the dependencies for the project
-
-To be able to test, do the following
-
-- run bundle init to create a Gemfile
-- add rspec gem in your Gemfile
-- run bundle install to install the gems
+- run bundle install to install the dependencies for the project
 
 ## 🛠 Running the Linter on a Ruby File<a name = "ins"></a>
 
