@@ -1,5 +1,5 @@
 # Ruby Capstone Project - Ruby Linter
-  
+
 [![View Code](https://img.shields.io/badge/View%20-Code-green)]()
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)]()
 [![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)]()
@@ -64,7 +64,7 @@ A Ruby Linters built on Ruby.
 
 ### Checks for indentation
 
-- It detects wrong identation based on good practices
+- It detects wrong indentation based on good practices
 
 #### good
 
@@ -90,7 +90,7 @@ A Ruby Linters built on Ruby.
 
 ### Check for multiple empty lines
 
-- Checks for multiple empty lines in sequence and recommends to remove the exceeding 
+- Checks for multiple empty lines in sequence and recommends to remove the exceeding
 
 #### good
 
@@ -102,9 +102,9 @@ A Ruby Linters built on Ruby.
     end
   end
 
-   def developer 
-    puts 'I drink coffee' 
-  end 
+   def developer
+    puts 'I drink coffee'
+  end
 ```
 
 #### bad
@@ -119,9 +119,9 @@ A Ruby Linters built on Ruby.
 
 
 
-   def developer 
-    puts 'I drink coffee' 
-  end 
+   def developer
+    puts 'I drink coffee'
+  end
 ```
 
 ### Checks for closing end statements
@@ -138,9 +138,9 @@ A Ruby Linters built on Ruby.
     end
   end
 
-   def developer 
-    puts 'I drink coffee' 
-  end 
+   def developer
+    puts 'I drink coffee'
+  end
 ```
 
 #### bad
@@ -151,19 +151,18 @@ A Ruby Linters built on Ruby.
       @pref_stack = args[0]
       @experience = args[1]
     end
- 
-  def developer 
-    puts 'I drink coffee' 
-  end 
-```
 
+  def developer
+    puts 'I drink coffee'
+  end
+```
 
 ## 🔧 Built with<a name = "with"></a>
 
 - Ruby 2.6.5
 
 ## 🔧 Tested with<a name = "tested"></a>
-  
+
 - RSpec 3.9
 
 ## 🔨 Setup
@@ -186,7 +185,7 @@ To be able to test, do the following
 To run the Linter on a file, follow these steps:
 
 - Go to Ruby_capstone/bin
- - run ruby main.rb <target_file.rb_path>
+- run ruby main.rb <target_file.rb_path>
 
 Remember to type the path relative to where main.rb is.
 
@@ -196,7 +195,7 @@ To run the linter on our example, use ruby main.rb example.rb (when inside bin/)
 
 - run bundle exec rspec
 
-## ✒️  Author <a name = "author"></a>
+## ✒️ Author <a name = "author"></a>
 
 👤 **Lucas Delbel**
 
@@ -210,7 +209,6 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/ldelbel/Ruby_capstone/issues).
 
-
 ## 👍 Show your support
 
 Give a ⭐️ if you like this project!
@@ -219,4 +217,3 @@ Give a ⭐️ if you like this project!
 
 [BetterSpecs for RSpec good practices](http://www.betterspecs.org/br/#contexts)<br>
 [RSpec Documentation Repo](https://github.com/rspec/rspec)
-

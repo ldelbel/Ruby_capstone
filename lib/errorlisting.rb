@@ -4,8 +4,8 @@ class ErrorListing
     @list = []
   end
 
-  def list_ident_error(line_n, expec_ident)
-    @list << { 'line' => line_n, 'error' => "Indentation error detected. Expected #{expec_ident} whitespaces." }
+  def list_indent_error(line_n, expec_indent)
+    @list << { 'line' => line_n, 'error' => "Indentation error detected. Expected #{expec_indent} whitespaces." }
   end
 
   def list_trail_error(line_n)

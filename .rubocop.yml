@@ -14,7 +14,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  ExcludedMethods: ["describe"]
   Max: 30
 Metrics/CyclomaticComplexity:
   Max: 20
@@ -35,7 +35,7 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-Style/IdenticalConditionalBranches:
+Style/indenticalConditionalBranches:
   Enabled: false
 Style/GlobalVars:
   Enabled: false

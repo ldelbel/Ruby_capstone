@@ -27,8 +27,8 @@ class Checker
     @file_lines.each_with_index do |line_content, line_num|
       expected_indentation = current_value * 2
       @control.line_iteration_and_counts(line_content, line_num)
-      smcheck_ident = @small.check_ident(line_content, expected_indentation)
-      smcheck_ident_end = @small.check_ident_end(line_content, expected_indentation)
+      smcheck_indent = @small.check_indent(line_content, expected_indentation)
+      smcheck_indent_end = @small.check_indent_end(line_content, expected_indentation)
       smcheck_end = @small.check_end(line_content)
       smcheck_elsif_else = @small.check_elsif_else(line_content)
       smcheck_empty = @small.check_empty(line_content)
@@ -37,13 +37,13 @@ class Checker
       if smcheck_empty
         next
       elsif smcheck_end
-        @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end
+        @error.list_indent_error(line_num + 1, expected_indentation - 2) unless smcheck_indent_end
       elsif smcheck_elsif_else
-        @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end
+        @error.list_indent_error(line_num + 1, expected_indentation - 2) unless smcheck_indent_end
       elsif smcheck_when
-        @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end
-      elsif !smcheck_ident
-        @error.list_ident_error(line_num + 1, expected_indentation)
+        @error.list_indent_error(line_num + 1, expected_indentation - 2) unless smcheck_indent_end
+      elsif !smcheck_indent
+        @error.list_indent_error(line_num + 1, expected_indentation)
       end
       current_value = @control.indentation_value
     end

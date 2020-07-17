@@ -11,16 +11,16 @@ class SmallChecks
     line_c.strip.split(' ')[0].eql?('when')
   end
 
-  def check_ident(line_c, expec_ident)
-    line_c.index(/[^ ]/).eql?(expec_ident)
+  def check_indent(line_c, expec_indent)
+    line_c.index(/[^ ]/).eql?(expec_indent)
   end
 
   def check_empty(line_c)
     line_c.blank?
   end
 
-  def check_ident_end(line_c, expec_ident)
-    line_c.index(/[^ ]/).eql?(expec_ident.zero? ? 0 : expec_ident - 2)
+  def check_indent_end(line_c, expec_indent)
+    line_c.index(/[^ ]/).eql?(expec_indent.zero? ? 0 : expec_indent - 2)
   end
 
   def block_status_check(control_instance)
