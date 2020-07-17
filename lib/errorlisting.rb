@@ -16,10 +16,10 @@ class ErrorListing
     case status
     when 1
       control_instance.end_error_check = true
-      "syntax error, unexpected end-of-input, expecting end"
+      'syntax error, unexpected end-of-input, expecting end'
     when -1
       control_instance.end_error_check = true
-      "syntax error, unexpected end, expecting end-of-input"
+      'syntax error, unexpected end, expecting end-of-input'
     end
   end
 

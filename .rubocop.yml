@@ -6,11 +6,11 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 150
 Metrics/MethodLength:
   Max: 35
 Metrics/AbcSize:
-  Max: 60
+  Max: 62
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
@@ -35,9 +35,11 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-Style/indenticalConditionalBranches:
+Style/IdenticalConditionalBranches:
   Enabled: false
 Style/GlobalVars:
+  Enabled: false
+  Style/GuardClause:
   Enabled: false
 
 Layout/HashAlignment:

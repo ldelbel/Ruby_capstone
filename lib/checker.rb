@@ -3,9 +3,9 @@ require_relative './control.rb'
 require_relative './errorlisting.rb'
 require_relative './smallchecks.rb'
 
-
 class Checker
-  attr_reader :end_error_check,  :file_lines, :error_output
+  attr_reader :end_error_check, :error_output
+  attr_accessor :file_lines, :control, :small # rules only for RSpec testing, except for file_lines
   def initialize(file)
     @file_lines = Read.new(file).file_lines
     @control = Control.new
@@ -33,10 +33,10 @@ class Checker
       smcheck_elsif_else = @small.check_elsif_else(line_content)
       smcheck_empty = @small.check_empty(line_content)
       smcheck_when = @small.check_when(line_content)
-             
-      if smcheck_empty
-        next
-      elsif smcheck_end
+
+      next if smcheck_empty
+
+      if smcheck_end
         @error.list_indent_error(line_num + 1, expected_indentation - 2) unless smcheck_indent_end
       elsif smcheck_elsif_else
         @error.list_indent_error(line_num + 1, expected_indentation - 2) unless smcheck_indent_end
@@ -45,6 +45,7 @@ class Checker
       elsif !smcheck_indent
         @error.list_indent_error(line_num + 1, expected_indentation)
       end
+
       current_value = @control.indentation_value
     end
   end

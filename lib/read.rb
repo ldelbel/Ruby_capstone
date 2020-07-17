@@ -9,4 +9,3 @@ class Read
     end
   end
 end
-

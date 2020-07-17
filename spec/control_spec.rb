@@ -2,11 +2,11 @@ require_relative '../lib/checker.rb'
 
 describe Control do
   let(:control) { Control.new }
-  let(:line1) {" def test "}
-  let(:line2) {" array test "}
-  let(:line3) {" end "}
+  let(:line1) { ' def test ' }
+  let(:line2) { ' array test ' }
+  let(:line3) { ' end ' }
   let(:line_num) { 10 }
-  
+
   describe '#line_iteration_and_counts' do
     context 'when line starts with reserved word' do
       it 'sets reserved_words_count += 1' do

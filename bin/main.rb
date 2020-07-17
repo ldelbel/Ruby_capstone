@@ -24,7 +24,7 @@ class Linter
   def print_result
     puts "\n **Traceback:".light_white.on_black.bold
     puts "\n"
-    if @check.end_error_check 
+    if @check.end_error_check
       puts " #{@file_input.yellow}:#{@check.file_lines.length}   #{@check.missing_end_check.red}"
     else
       @check.error_output.each do |hash|

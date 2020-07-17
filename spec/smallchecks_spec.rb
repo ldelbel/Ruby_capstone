@@ -9,7 +9,7 @@ describe SmallChecks do
   let(:expec_indent) { 2 }
   let(:control) { Control.new }
   let(:array) { [1, 2, 3] }
-  let(:array2){ [2, 4, 6] }
+  let(:array2) { [2, 4, 6] }
 
   describe '#check_end' do
     context 'when line only contains an end statement' do
@@ -100,7 +100,7 @@ describe SmallChecks do
       it 'returns 0' do
         allow(control).to receive(:reserved_words_count).and_return(1)
         allow(control).to receive(:end_count).and_return(1)
-        expect(small.block_status_check(control)).to eql(0)
+        expect(small.block_status_check(control)).to be(0)
       end
     end
 
