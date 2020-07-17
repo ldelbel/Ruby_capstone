@@ -1,7 +1,11 @@
-require_relative './support.rb'
+require_relative './read.rb'
+require_relative './control.rb'
+require_relative './errorlisting.rb'
+require_relative './smallchecks.rb'
+
 
 class Checker
-  attr_accessor :error_output, :end_error_check, :file_lines
+  attr_reader :end_error_check,  :file_lines, :error_output
   def initialize(file)
     @file_lines = Read.new(file).file_lines
     @control = Control.new
@@ -15,7 +19,6 @@ class Checker
     @file_lines.each_with_index do |line_content, line_num|
       @error.list_trail_error(line_num) if line_content[-2].eql?(' ') && !line_content.blank?
     end
-    return @error.list
   end
 
   def indentation_check
@@ -27,7 +30,7 @@ class Checker
       smcheck_ident = @small.check_ident(line_content, expected_indentation)
       smcheck_ident_end = @small.check_ident_end(line_content, expected_indentation)
       smcheck_end = @small.check_end(line_content)
-      smcheck_elsif = @small.check_elsif(line_content)
+      smcheck_elsif_else = @small.check_elsif_else(line_content)
       smcheck_empty = @small.check_empty(line_content)
       smcheck_when = @small.check_when(line_content)
              
@@ -35,7 +38,7 @@ class Checker
         next
       elsif smcheck_end
         @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end
-      elsif smcheck_elsif
+      elsif smcheck_elsif_else
         @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end
       elsif smcheck_when
         @error.list_ident_error(line_num + 1, expected_indentation - 2) unless smcheck_ident_end

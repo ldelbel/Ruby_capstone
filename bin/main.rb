@@ -49,7 +49,6 @@ class Linter
       if @check.error_output.empty?
         puts "\n"
         puts " ----> #{@check.error_output.length} offenses detected.".black.on_cyan
-        puts @check.end_error_check
       else
         puts "\n"
         puts " ----> #{@check.error_output.length} offenses detected.".white.on_red

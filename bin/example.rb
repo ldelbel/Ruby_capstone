@@ -1,37 +1,27 @@
-class String
-  def blank?
-    strip.empty?
+class Test1
+  def test
+    strip.nil?
   end
 end
 
-    class Control
-attr_accessor :reserved_words_count, :error_list, :indentation_value, :end_count
-  attr_reader :reserved_words
+class Test2
+  attr_accessor :test_variable
+  attr_reader :test2_variable
 
-  def initialize
-    @reserved_words = ['begin', 'case', 'class', 'def', 'do', 'if', 'module', 'unless']
-    @error_list = []
-    @reserved_words_count = 0
-@end_count = 0
-    @indentation_value = 0
+      def initialize(param)
+    @array = [1,2,3,4,5]
+    @array2 = [6,7,8,9,10]
+    @array3 = []
+    @param = param
   end
 
-  def line_iteration_and_counts(line, control_instance) 
-    return if line[0].strip == '#' 
-
-    if control_instance.reserved_words.include?(line.split(' ')[0]) || line.include?(' do ')
-      control_instance.reserved_words_count += 1
-      control_instance.indentation_value += 1
-    elsif line.strip == 'end'
-      control_instance.end_count += 1
-      control_instance.indentation_value -= 1
+  def testing(line, control_instance)
+    if @array.include? param
+      @array3 << param
+    elsif @array2.include? param
+      @array3 << param - 1
+    else
+      @param += 1
     end
-  end
-
-  def reset
-    @error_list = []
-    @reserved_words_count = 0
-    @end_count = 0
-       @indentation_value = 0
   end
 end
