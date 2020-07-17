@@ -1,0 +1,65 @@
+AllCops:
+  Exclude:
+    - "Guardfile"
+    - "Rakefile"
+
+  DisplayCopNames: true
+
+Layout/LineLength:
+  Max: 150
+Metrics/MethodLength:
+  Max: 35
+Metrics/AbcSize:
+  Max: 62
+Metrics/ClassLength:
+  Max: 150
+Metrics/BlockLength:
+  ExcludedMethods: ["describe"]
+  Max: 30
+Metrics/CyclomaticComplexity:
+  Max: 20
+Metrics/PerceivedComplexity:
+  Max: 20
+Metrics/ModuleLength:
+  Max: 130
+
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EachForSimpleLoop:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/DefWithParentheses:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Style/IdenticalConditionalBranches:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
+  Style/GuardClause:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedColonStyle: key
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+GlobalVars:
+  AllowedVariables:
+    - redis
+# rubocop:disable Style/CaseEquality
