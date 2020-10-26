@@ -173,6 +173,7 @@ A Ruby Linters built on Ruby.
 ## 🛠 Installing <a name = "ins"></a>
 
 - run bundle install to install the dependencies for the project
+- run gem install colorize
 
 ## 🛠 Running the Linter on a Ruby File<a name = "ins"></a>
 
